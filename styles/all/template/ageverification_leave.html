@@ -1,0 +1,12 @@
+{% INCLUDECSS '@phpbbmodders_ageverification/ageverification.css' %}
+{% include 'overall_header.html' %}
+
+<div class="panel ageverification-panel">
+	<div class="inner">
+		<h2 class="ageverification-title">{{ lang('AGEVERIFICATION_TITLE') }}</h2>
+		<p class="ageverification-text">{{ lang('AGEVERIFICATION_LEAVE_TEXT', AGEVERIFICATION_MIN_AGE) }}</p>
+		{% if not S_AGEVERIFICATION_REFUSED %}<p class="ageverification-back"><a href="{{ U_AGEVERIFICATION_GATE }}">{{ lang('AGEVERIFICATION_BACK') }}</a></p>{% endif %}
+	</div>
+</div>
+
+{% include 'overall_footer.html' %}

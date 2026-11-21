@@ -1,0 +1,7 @@
+		<dl>
+			<dt><label for="forum_ageverification">{{ lang('AGEVERIFICATION_FORUM') ~ lang('COLON') }}</label><br><span id="forum_ageverification_explain">{{ lang('AGEVERIFICATION_FORUM_EXPLAIN') }}{% if S_AGEVERIFICATION_BOARD %} {{ lang('AGEVERIFICATION_FORUM_BOARD_ON') }}{% endif %}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="forum_ageverification" value="1" aria-describedby="forum_ageverification_explain"{% if S_AGEVERIFICATION_FORUM %} id="forum_ageverification" checked{% endif %}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="forum_ageverification" value="0" aria-describedby="forum_ageverification_explain"{% if not S_AGEVERIFICATION_FORUM %} id="forum_ageverification" checked{% endif %}> {{ lang('NO') }}</label>
+			</dd>
+		</dl>

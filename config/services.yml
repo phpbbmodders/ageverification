@@ -1,0 +1,35 @@
+services:
+    phpbbmodders.ageverification.gate:
+        class: phpbbmodders\ageverification\gate
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@request'
+            - '@user'
+            - '%tables.forums%'
+            - '%tables.topics%'
+            - '%tables.users%'
+
+    phpbbmodders.ageverification.controller.gate:
+        class: phpbbmodders\ageverification\controller\gate
+        arguments:
+            - '@config'
+            - '@config_text'
+            - '@controller.helper'
+            - '@language'
+            - '@request'
+            - '@template'
+            - '@phpbbmodders.ageverification.gate'
+            - '%core.php_ext%'
+
+    phpbbmodders.ageverification.listener:
+        class: phpbbmodders\ageverification\event\listener
+        arguments:
+            - '@dbal.conn'
+            - '@controller.helper'
+            - '@language'
+            - '@request'
+            - '@user'
+            - '@phpbbmodders.ageverification.gate'
+        tags:
+            - { name: event.listener }

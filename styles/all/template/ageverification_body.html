@@ -1,0 +1,28 @@
+{% INCLUDECSS '@phpbbmodders_ageverification/ageverification.css' %}
+{% include 'overall_header.html' %}
+
+<div class="panel ageverification-panel">
+	<div class="inner">
+		<h2 class="ageverification-title">{{ lang('AGEVERIFICATION_TITLE') }}</h2>
+		{% if AGEVERIFICATION_ERROR %}<p class="error" role="alert">{{ AGEVERIFICATION_ERROR }}</p>{% endif %}
+		<div class="content ageverification-text">{{ AGEVERIFICATION_TEXT }}</div>
+		<form method="post" action="{{ U_AGEVERIFICATION_ACTION }}" id="ageverification">
+			{% if not S_AGEVERIFICATION_CAN_CONFIRM %}
+			<p class="ageverification-login-text">{{ lang(U_AGEVERIFICATION_REGISTER ? 'AGEVERIFICATION_LOGIN_REGISTER_TEXT' : 'AGEVERIFICATION_LOGIN_TEXT', AGEVERIFICATION_MIN_AGE) }}</p>
+			{% endif %}
+			<div class="ageverification-buttons">
+				{% if S_AGEVERIFICATION_CAN_CONFIRM %}
+				<button type="submit" name="ageverification_confirm" class="button ageverification-enter">{{ lang('AGEVERIFICATION_ENTER', AGEVERIFICATION_MIN_AGE) }}</button>
+				{% else %}
+				<a href="{{ U_AGEVERIFICATION_LOGIN }}" class="button ageverification-login" rel="nofollow">{{ lang('LOGIN') }}</a>
+				{% if U_AGEVERIFICATION_REGISTER %}<a href="{{ U_AGEVERIFICATION_REGISTER }}" class="button ageverification-register" rel="nofollow">{{ lang('REGISTER') }}</a>{% endif %}
+				{% endif %}
+				<button type="submit" name="ageverification_leave" class="button ageverification-leave">{{ lang('AGEVERIFICATION_LEAVE', AGEVERIFICATION_MIN_AGE) }}</button>
+			</div>
+			{% if AGEVERIFICATION_REDIRECT %}<input type="hidden" name="redirect" value="{{ AGEVERIFICATION_REDIRECT|e('html') }}">{% endif %}
+			{{ S_FORM_TOKEN }}
+		</form>
+	</div>
+</div>
+
+{% include 'overall_footer.html' %}

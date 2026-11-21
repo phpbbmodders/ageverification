@@ -1,0 +1,29 @@
+/* Age Verification: the gate page and the page for visitors who are too young */
+.ageverification-panel {
+	max-width: 640px;
+	margin: 2em auto;
+	text-align: center;
+}
+
+.ageverification-title {
+	margin-top: 0.5em;
+}
+
+.ageverification-text {
+	font-size: 1.1em;
+	line-height: 1.5;
+	margin-bottom: 1.5em;
+}
+
+.ageverification-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1em;
+	margin-bottom: 1em;
+}
+
+.ageverification-buttons .button {
+	font-size: 1.1em;
+	padding: 0.4em 1.2em;
+}

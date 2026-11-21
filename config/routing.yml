@@ -1,0 +1,7 @@
+phpbbmodders_ageverification_gate:
+    path: /ageverification
+    defaults: { _controller: phpbbmodders.ageverification.controller.gate:handle }
+
+phpbbmodders_ageverification_leave:
+    path: /ageverification/leave
+    defaults: { _controller: phpbbmodders.ageverification.controller.gate:leave }

@@ -1,0 +1,79 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_AGEVERIFICATION') }}</h1>
+<p>{{ lang('ACP_AGEVERIFICATION_SETTINGS_EXPLAIN') }}</p>
+
+<form id="acp_ageverification" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('AGEVERIFICATION_GATE_SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="ageverification_enabled">{{ lang('AGEVERIFICATION_ENABLED') }}{{ lang('COLON') }}</label><br><span id="ageverification_enabled_explain">{{ lang('AGEVERIFICATION_ENABLED_EXPLAIN') }}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="ageverification_enabled" value="1" aria-describedby="ageverification_enabled_explain"{% if S_AGEVERIFICATION_ENABLED %} id="ageverification_enabled" checked{% endif %}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="ageverification_enabled" value="0" aria-describedby="ageverification_enabled_explain"{% if not S_AGEVERIFICATION_ENABLED %} id="ageverification_enabled" checked{% endif %}> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="ageverification_min_age">{{ lang('AGEVERIFICATION_MIN_AGE') }}{{ lang('COLON') }}</label><br><span id="ageverification_min_age_explain">{{ lang('AGEVERIFICATION_MIN_AGE_EXPLAIN') }}</span></dt>
+			<dd><input type="number" id="ageverification_min_age" name="ageverification_min_age" value="{{ AGEVERIFICATION_MIN_AGE }}" min="{{ AGEVERIFICATION_MIN_AGE_LOWEST }}" max="{{ AGEVERIFICATION_MIN_AGE_HIGHEST }}" size="3" required aria-describedby="ageverification_min_age_explain"></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('AGEVERIFICATION_REMEMBER_SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="ageverification_require_login">{{ lang('AGEVERIFICATION_REQUIRE_LOGIN') }}{{ lang('COLON') }}</label><br><span id="ageverification_require_login_explain">{{ lang('AGEVERIFICATION_REQUIRE_LOGIN_EXPLAIN') }}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="ageverification_require_login" value="1" aria-describedby="ageverification_require_login_explain"{% if S_AGEVERIFICATION_REQUIRE_LOGIN %} id="ageverification_require_login" checked{% endif %}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="ageverification_require_login" value="0" aria-describedby="ageverification_require_login_explain"{% if not S_AGEVERIFICATION_REQUIRE_LOGIN %} id="ageverification_require_login" checked{% endif %}> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="ageverification_guest_time">{{ lang('AGEVERIFICATION_GUEST_TIME') }}{{ lang('COLON') }}</label><br><span id="ageverification_guest_time_explain">{{ lang('AGEVERIFICATION_GUEST_TIME_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="number" id="ageverification_guest_time" name="ageverification_guest_time" value="{{ AGEVERIFICATION_GUEST_TIME }}" min="1" size="6" required aria-describedby="ageverification_guest_time_explain">
+				<select id="ageverification_guest_unit" name="ageverification_guest_unit" aria-label="{{ lang('AGEVERIFICATION_GUEST_UNIT')|e('html_attr') }}">
+					{% for unit in loops.ageverification_guest_units %}
+					<option value="{{ unit.VALUE }}"{% if unit.S_CURRENT %} selected{% endif %}>{{ unit.LABEL }}</option>
+					{% endfor %}
+				</select>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="ageverification_birthday_skip">{{ lang('AGEVERIFICATION_BIRTHDAY_SKIP') }}{{ lang('COLON') }}</label><br><span id="ageverification_birthday_skip_explain">{{ lang('AGEVERIFICATION_BIRTHDAY_SKIP_EXPLAIN') }}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="ageverification_birthday_skip" value="1" aria-describedby="ageverification_birthday_skip_explain"{% if S_AGEVERIFICATION_BIRTHDAY_SKIP %} id="ageverification_birthday_skip" checked{% endif %}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="ageverification_birthday_skip" value="0" aria-describedby="ageverification_birthday_skip_explain"{% if not S_AGEVERIFICATION_BIRTHDAY_SKIP %} id="ageverification_birthday_skip" checked{% endif %}> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('AGEVERIFICATION_PAGE_SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="ageverification_text">{{ lang('AGEVERIFICATION_TEXT') }}{{ lang('COLON') }}</label><br><span id="ageverification_text_explain">{{ lang('AGEVERIFICATION_TEXT_EXPLAIN') }}</span></dt>
+			<dd><textarea id="ageverification_text" name="ageverification_text" rows="6" cols="60" aria-describedby="ageverification_text_explain">{{ AGEVERIFICATION_TEXT }}</textarea></dd>
+		</dl>
+		<dl>
+			<dt><label for="ageverification_exit_url">{{ lang('AGEVERIFICATION_EXIT_URL') }}{{ lang('COLON') }}</label><br><span id="ageverification_exit_url_explain">{{ lang('AGEVERIFICATION_EXIT_URL_EXPLAIN') }}</span></dt>
+			<dd><input type="url" id="ageverification_exit_url" name="ageverification_exit_url" value="{{ AGEVERIFICATION_EXIT_URL }}" maxlength="{{ AGEVERIFICATION_URL_MAX_LENGTH }}" size="40" spellcheck="false" aria-describedby="ageverification_exit_url_explain"></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('AGEVERIFICATION_RESET') }}</legend>
+		<dl>
+			<dt><strong>{{ lang('AGEVERIFICATION_RESET') }}{{ lang('COLON') }}</strong><br><span id="ageverification_reset_explain">{{ lang('AGEVERIFICATION_RESET_EXPLAIN') }}</span></dt>
+			<dd><input class="button2" type="submit" id="ageverification_reset" name="ageverification_reset" value="{{ lang('AGEVERIFICATION_RESET')|e('html_attr') }}" aria-describedby="ageverification_reset_explain"></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<legend>{{ lang('SUBMIT') }}</legend>
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT')|e('html_attr') }}">&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET')|e('html_attr') }}">
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}
