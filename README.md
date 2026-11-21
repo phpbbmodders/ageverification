@@ -21,6 +21,21 @@ Age Verification works on trust. Visitors click a button to say they are old eno
 - Guests whose browser refuses the cookie are told so.
 - Logging in, logging out, password resets, the privacy policy and terms of use, and the Administration Control Panel never ask, so nobody gets locked out.
 
+## Screenshots
+
+<table>
+<tr>
+<td><a href="docs/images/screenshots/ageverification-page.png"><img src="docs/images/screenshots/ageverification-page.png" width="440" height="168" alt="The age confirmation page with its two buttons"></a></td>
+<td><a href="docs/images/screenshots/ageverification-login-required.png"><img src="docs/images/screenshots/ageverification-login-required.png" width="440" height="179" alt="The age confirmation page when login is required"></a></td>
+</tr>
+<tr>
+<td><a href="docs/images/screenshots/ageverification-acp-settings.png"><img src="docs/images/screenshots/ageverification-acp-settings.png" width="440" height="332" alt="ACP Age Verification settings"></a></td>
+<td><a href="docs/images/screenshots/ageverification-page-phone.png"><img src="docs/images/screenshots/ageverification-page-phone.png" width="153" height="332" alt="The age confirmation page on a phone"></a></td>
+</tr>
+</table>
+
+Click an image for the full size. The [screenshot gallery](docs/images/screenshots/README.md) has the rest.
+
 ## Settings
 
 **ACP → Extensions → Age Verification → Settings**
